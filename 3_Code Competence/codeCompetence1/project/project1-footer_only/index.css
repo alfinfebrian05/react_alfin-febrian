@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: block;
+  background-color: #183986;
+  color: white;
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-family: "Inter", sans-serif;
+}
+
+header h1 {
+  font-weight: 500;
+}
+
+.main-section {
+  background-color: #e3eaf9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #183986;
+  font-family: "Inter", sans-serif;
+  height: 60vh;
+}
+
+.main-section h2 {
+  font-weight: 400;
+}
+
+footer {
+  padding: 20px 32px;
+  font-family: "Inter";
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(3, 32vw);
+  background-color: #081d4e;
+  color: #fff;
+}
+
+.footer-section-1 {
+  margin: 0;
+}
+
+.footer-section-2 {
+  grid-column: 2;
+}
+
+.footer-section-3 {
+  grid-column: 3;
+}
+
+.footer-section-1 h1 {
+  font-weight: 700;
+}
+
+.footer-section-2 h4,
+.footer-section-3 h4 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.title-and-linkedin {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.title-and-linkedin h1 {
+  margin: 0;
+}
+
+.sub-title {
+  padding-top: 24px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.btn-whatsapp-me {
+  height: 33px;
+  padding-right: 16px;
+  padding-left: 16px;
+  border-radius: 60px;
+  background-color: #1d75c3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-whatsapp-me:hover {
+  background-color: #104a7d;
+  outline: 2px solid white;
+}
+
+ul li {
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.service-lists {
+  list-style: none;
+  padding: 0;
+  /* padding-top: 18px; */
+}
+
+.service-lists a {
+  text-decoration: none;
+  color: white;
+}
+
+.social-icons-list {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons-list li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 60px;
+  padding: 10px;
+}
+
+.social-icons-list li a:hover {
+  background-color: #e3eaf9;
+}
+
+.social-icons-list svg {
+  color: white;
+}
+
+.social-icons-list svg:hover {
+  color: #081d4e;
+}
+
+@media (max-width: 420px) {
+  .sub-title {
+    margin: 0;
+    padding-bottom: 20px;
+  }
+  .title-and-linkedin h1 {
+    font-size: 24px;
+  }
+  footer {
+    display: block;
+  }
+}
