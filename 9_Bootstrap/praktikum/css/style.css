@@ -46,9 +46,16 @@ ul {
   }
 }
 
+@media (max-width: 1200px) {
+  p {
+    margin: auto 190px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   header .navbar-collapse {
     margin-top: 2rem;
+    padding: 6px;
   }
   header ul li a {
     text-align: center;
@@ -59,15 +66,20 @@ ul {
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   header .navbar-collapse {
     margin-top: 2rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #fff;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.135);
+    border-radius: 0.4rem;
   }
 
   .navbar-collapse ul {
     padding: 0.4rem;
   }
   p {
-    margin: auto;
+    margin: auto 40px;
   }
 }
