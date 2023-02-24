@@ -71,7 +71,7 @@
         <form
           action=""
           method="post"
-          class="container-fluid mt-5 needs-validation"
+          class="container-fluid mt-5 was-validated"
         >
           <h3 class="mb-4">Detail Product</h3>
           <div class="mb-3 col-md-6 col-sm-8 has-validation">
@@ -85,74 +85,103 @@
               id="validationProductName"
               required
             />
-            <div class="invalid-feedback">Tolong isi nama produk</div>
+            <div class="invalid-feedback">Anda harus mengisi nama produk!</div>
+            <div class="valid-feedback">
+              Terimakasih telah mengisi nama produk
+            </div>
           </div>
-          <div class="mb-3 col-md-4 col-sm-6">
+          <div class="mb-3 col-md-4 col-sm-6 has-validation">
             <label for="product-category" class="form-label"
               >Product Category</label
             >
-            <select name="product-category" class="form-select">
-              <option value="category 1" selected>Category 1</option>
+            <select name="product-category" class="form-select" required>
+              <option selected disabled value="">Pilih kategori produk</option>
+              <option value="category 1">Category 1</option>
               <option value="category 2">Category 2</option>
               <option value="category 3">Category 3</option>
             </select>
+            <div class="invalid-feedback">
+              Terimakasih telah mengisi kategori produk
+            </div>
+            <div class="valid-feedback">Tolong isi sesuai kategori produk</div>
           </div>
-          <div class="mb-3 col-md-4 col-sm-6">
+          <div class="mb-3 col-md-4 col-sm-6 has-validation">
             <label for="product-category" class="form-label"
               >Product Category</label
             >
-            <input
-              type="file"
-              name="image"
-              class="form-control border-primary text-primary"
-            />
+            <input type="file" name="image" required class="form-control" />
+            <div class="invalid-feedback">Tolong pilih gambar produk</div>
+            <div class="valid-feedback">
+              Terimakasih telah memilih gambar produk
+            </div>
           </div>
-          <div class="mb-3 col-md-4 col-sm-6">
+          <div class="mb-3 col-md-4 col-sm-6 form-check">
             <label class="pb-1 form-label">Product Freshness</label>
-            <ul>
-              <li>
-                <input
-                  type="radio"
-                  name="image"
-                  class="form-check-input border-primary text-primary me-2"
-                />
-                <label for="product-category" class="form-label"
-                  >Brand New</label
-                >
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="image"
-                  class="form-check-input border-primary text-primary me-2"
-                />
-                <label for="product-category" class="form-label"
-                  >Second Hand</label
-                >
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="image"
-                  class="form-check-input border-primary text-primary me-2"
-                />
-                <label for="product-category" class="form-label"
-                  >Refurbrished</label
-                >
-              </li>
-            </ul>
+            <div class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                id="validationProductBrandNew"
+                name="radio-stacked"
+                required
+              />
+              <label for="validationProductBrandNew" class="form-check-label"
+                >Brand New</label
+              >
+              <div class="invalid-feedback">
+                Pilih Salah Satu Product Freshness!
+              </div>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                id="validationSecondHand"
+                name="radio-stacked"
+                required
+              />
+              <label for="validationSecondHand" class="form-check-label"
+                >Second Hand</label
+              >
+              <div class="invalid-feedback">
+                Pilih Salah Satu Product Freshness!
+              </div>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                id="validationRefurbrished"
+                name="radio-stacked"
+                required
+              />
+              <label for="validationRefurbrished" class="form-check-label"
+                >Refurbrished
+              </label>
+              <div class="invalid-feedback">
+                Pilih Salah Satu Product Freshness!
+              </div>
+            </div>
           </div>
           <div class="mb-3">
             <label class="form-label">Additional Description</label>
-            <textarea class="form-control" rows="10"></textarea>
+            <textarea class="form-control" rows="10" required></textarea>
+            <div class="invalid-feedback">Deskripsi produk wajib diisi!</div>
+            <div class="valid-feedback">
+              Terimakasih telah mengisi deskripsi produk
+            </div>
           </div>
-          <div class="mb-5">
-            <label for="product-price" class="form-label">Product Price</label>
+          <div class="mb-5 has-validation">
+            <label for="validationProductPrice" class="form-label"
+              >Product Price</label
+            >
             <input
               type="number"
               name="price"
               class="form-control"
+              id="validationProductPrice"
               placeholder="$1"
+              required
             />
           </div>
           <button type="submit" class="btn btn-primary w-100 mb-5">
