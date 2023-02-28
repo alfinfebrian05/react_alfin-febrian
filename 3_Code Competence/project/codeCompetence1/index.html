@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <title>Alfin Febrian | Web Developer & UI / UX Designer</title>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-sm bg-white fixed-top px-xl-5 px-lg-3 py-xl-2 px-sm-3 border-bottom border-2"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Alfin Febrian</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end w-75"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            data-bs-scroll="true"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                Alfin Febrian
+              </h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul
+                class="navbar-nav justify-content-end align-items-lg-center flex-grow-1 gap-3"
+              >
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="#portofolio"
+                    >Projects</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link btn btn-success text-white px-xl-3 py-xl-2 fw-medium text-uppercase"
+                    href="#"
+                    ><i class="bi bi-briefcase-fill pe-1"></i> Hire Me
+                  </a>
+                </li>
+                <li class="nav-item d-sm-none">
+                  <h3>Socials</h3>
+                  <div class="d-sm-flex pt-3">
+                    <a
+                      href="https://www.instagram.com/alfinisnotfound404/"
+                      target="_blank"
+                      class="fs-5 bg-body-secondary border px-2 py-1 text-black rounded-circle me-1"
+                      ><i class="bi bi-instagram"></i
+                    ></a>
+                    <a
+                      href="https://www.linkedin.com/in/alfin-febrian/"
+                      target="_blank"
+                      class="fs-5 bg-body-secondary border px-2 py-1 text-black rounded-circle me-1"
+                      ><i class="bi bi-linkedin"></i
+                    ></a>
+                    <a
+                      href="#facebook"
+                      target="_blank"
+                      class="fs-5 bg-body-secondary border px-2 py-1 text-black rounded-circle me-1"
+                      ><i class="bi bi-facebook"></i
+                    ></a>
+                    <a
+                      href="https://github.com/alfinfebrian05"
+                      target="_blank"
+                      class="fs-5 bg-body-secondary border px-2 py-1 text-black rounded-circle"
+                      ><i class="bi bi-github"></i
+                    ></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div
+      class="d-none d-md-flex justify-content-between bg-body-tertiary mt-5 pt-4 pb-3 align-items-center px-md-4 px-xl-5 mx-xl-2 gap-3"
+    >
+      <h5 class="pt-2">Connect With Me</h5>
+      <div class="">
+        <a
+          href="https://www.instagram.com/alfinisnotfound404/"
+          target="_blank"
+          class="fs-5 bg-body-secondary border border-1 px-2 py-1 text-black rounded-circle me-1"
+          ><i class="bi bi-instagram"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/alfin-febrian/"
+          target="_blank"
+          class="fs-5 bg-body-secondary border border-1 px-2 py-1 text-black rounded-circle me-1"
+          ><i class="bi bi-linkedin"></i
+        ></a>
+        <a
+          href="#facebook"
+          target="_blank"
+          class="fs-5 bg-body-secondary border border-1 px-2 py-1 text-black rounded-circle me-1"
+          ><i class="bi bi-facebook"></i
+        ></a>
+        <a
+          href="https://github.com/alfinfebrian05"
+          target="_blank"
+          class="fs-5 bg-body-secondary border border-1 px-2 py-1 text-black rounded-circle"
+          ><i class="bi bi-github"></i
+        ></a>
+      </div>
+    </div>
+    <main class="mt-5 pt-2 p-md-0 m-md-0">
+      <div class="container-fluid px-xl-5 pt-xl-3 pb-xl-4 bg-body-secondary">
+        <div class="row justify-content-center align-items-center py-3">
+          <div
+            class="col-xl-3 col-md-4 col-lg-4 d-sm-flex justify-content-center"
+          >
+            <img
+              src="assets/avatar.png"
+              alt=""
+              class="bg-body-tertiary border border-2 rounded-circle"
+              width="220px"
+            />
+          </div>
+          <div
+            class="col-xl-4 col-md-7 col-lg-5 lh-lg py-3 px-4 px-lg-0 py-lg-0 px-md-4 py-md-0"
+          >
+            <h1>Who Am I?</h1>
+            <p class="fs-6 pb-2">
+              Saya adalah mahasiswa Teknik Informatika yang menyukai bidang
+              Frontend Development dan UI / UX Design. Saya sering melakukan
+              eksplorasi pembuatan tampilan website atau eksplorasi UI / UX
+              Design website
+            </p>
+            <div class="d-flex justify-content-start gap-2">
+              <a href="#portofolio" class="btn btn-primary"
+                ><i class="bi bi-laptop pe-2"></i>Portofolio Saya</a
+              >
+              <a href="#contact" class="btn btn-outline-success">
+                <i class="bi bi-phone-fill pe-1"></i> Hubungi Saya</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid bg-body-tertiary">
+        <div
+          class="d-flex justify-content-center align-items-center py-5 px-0 px-md-3 px-xl-5 flex-column gap-2"
+          id="portofolio"
+        >
+          <div class="container-fluid text-center px-0 mx-auto mx-md-5 px-md-5">
+            <h2 class="text-success">My Portofolio</h2>
+            <p class="pt-2">
+              Berikut adalah beberapa proyek yang pernah buat, baik itu proyek
+              dari Kampus ataupun proyek website freelance
+            </p>
+          </div>
+          <div class="row gap-lg-0 g-sm-4 row-gap-3 row-gap-md-0 gap-md-0">
+            <div class="col-lg-4 col-md-6 col-sm-auto">
+              <div class="card border-0 shadow">
+                <img
+                  src="https://source.unsplash.com/360x200?programming"
+                  alt=""
+                  class="card-img-top"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Project 1</h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime earum reprehenderit iusto rerum, dignissimos minima
+                    ea id nostrum impedit repellendus.
+                  </p>
+                  <div class="text-end">
+                    <a href="#" class="card-link btn btn-primary">
+                      Detail Proyek
+                      <i class="bi bi-arrow-right ps-2"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-auto">
+              <div class="card border-0 shadow">
+                <img
+                  src="https://source.unsplash.com/360x200?design"
+                  alt=""
+                  class="card-img-top"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Project 2</h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime earum reprehenderit iusto rerum, dignissimos minima
+                    ea id nostrum impedit repellendus.
+                  </p>
+                  <div class="text-end">
+                    <a href="#" class="card-link btn btn-primary">
+                      Detail Proyek
+                      <i class="bi bi-arrow-right ps-2"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-auto">
+              <div class="card border-0 shadow">
+                <img
+                  src="https://source.unsplash.com/360x200?coffee"
+                  alt=""
+                  class="card-img-top"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Project 3</h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime earum reprehenderit iusto rerum, dignissimos minima
+                    ea id nostrum impedit repellendus.
+                  </p>
+                  <div class="text-end">
+                    <a href="#" class="card-link btn btn-primary">
+                      Detail Proyek
+                      <i class="bi bi-arrow-right ps-2"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-auto">
+              <div class="card border-0 shadow">
+                <img
+                  src="https://source.unsplash.com/360x200?programming"
+                  alt=""
+                  class="card-img-top"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Project 4</h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime earum reprehenderit iusto rerum, dignissimos minima
+                    ea id nostrum impedit repellendus.
+                  </p>
+                  <div class="text-end">
+                    <a href="#" class="card-link btn btn-primary">
+                      Detail Proyek
+                      <i class="bi bi-arrow-right ps-2"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-auto">
+              <div class="card border-0 shadow">
+                <img
+                  src="https://source.unsplash.com/360x200?design"
+                  alt=""
+                  class="card-img-top"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Project 5</h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime earum reprehenderit iusto rerum, dignissimos minima
+                    ea id nostrum impedit repellendus.
+                  </p>
+                  <div class="text-end">
+                    <a href="#" class="card-link btn btn-primary">
+                      Detail Proyek
+                      <i class="bi bi-arrow-right ps-2"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-auto">
+              <div class="card border-0 shadow">
+                <img
+                  src="https://source.unsplash.com/360x200?coffee"
+                  alt=""
+                  class="card-img-top"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Project 6</h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime earum reprehenderit iusto rerum, dignissimos minima
+                    ea id nostrum impedit repellendus.
+                  </p>
+                  <div class="text-end">
+                    <a href="#" class="card-link btn btn-primary">
+                      Detail Proyek
+                      <i class="bi bi-arrow-right ps-2"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid bg-white py-4 mb-4">
+        <div
+          class="d-flex justify-content-center align-items-center flex-column"
+        >
+          <h1>Clients</h1>
+          <p class="text-center d-none d-md-block pt-2">
+            Berikut adalah beberapa client yang telah bekerja sama dengan <br />
+            saya untuk pembuatan proyek website mereka
+          </p>
+          <p class="text-center d-block d-md-none pt-2">
+            Berikut adalah beberapa client yang telah bekerja sama dengan saya
+            untuk pembuatan proyek website mereka
+          </p>
+        </div>
+        <!-- Show Clients on bigger screen then mobile (desktop / tablet) -->
+        <div class="d-none d-md-block">
+          <div class="row">
+            <div
+              class="col-md-12 col-lg-6 d-flex justify-content-center justify-content-lg-end gap-5 align-items-center pe-4"
+            >
+              <img
+                class="img-fluid w-25 h-auto"
+                src="assets/client-logo_1.png"
+                alt=""
+              />
+              <img
+                class="img-fluid w-25 h-auto"
+                src="assets/client-logo_2.png"
+                alt=""
+              />
+            </div>
+            <div
+              class="col-md-12 col-lg-6 d-flex justify-content-center gap-5 justify-content-lg-start align-items-center ps-4"
+            >
+              <img
+                class="img-fluid w-25 h-auto"
+                src="assets/client-logo_3.jpg"
+                alt=""
+              />
+              <img
+                class="img-fluid w-25 h-auto"
+                src="assets/client-logo_4.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Show Carousel Clients only mobile -->
+        <div
+          id="carouselClients"
+          class="carousel carousel-dark slide d-block d-md-none"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators top-100">
+            <button
+              type="button"
+              data-bs-target="#carouselClients"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselClients"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselClients"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselClients"
+              data-bs-slide-to="3"
+              aria-label="Slide 4"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="assets/client-logo_1.png"
+                class="w-100 h-auto client-logo"
+                alt="client 1"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="assets/client-logo_2.png"
+                class="w-100 h-auto client-logo"
+                alt="client 2"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="assets/client-logo_3.jpg"
+                class="w-100 h-auto client-logo"
+                alt="client 3"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="assets/client-logo_4.jpg"
+                class="w-100 h-auto client-logo"
+                alt="client 4"
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselClients"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselClients"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="container-fluid p-5 bg-body-tertiary">
+        <div class="row">
+          <div class="col-lg-4 col-md-5 col-sm-12 p-0 pe-md-4 pe-lg-5">
+            <h3>Diskusi dengan saya</h3>
+            <p>
+              Ingin membuat landing page / aplikasi berbasis website? Diskusikan
+              ide aplikasi berbasis website ataupun ingin membuat landing page
+              dengan saya
+              <strong class="text-success">GRATIS</strong>
+            </p>
+          </div>
+          <div class="col-md-7 col-lg-8 p-0">
+            <form id="contact-me" method="post">
+              <div class="row">
+                <div class="pb-3 col-lg-6 col-md-12 col-sm-12">
+                  <input
+                    type="text"
+                    name="nama"
+                    id="nama"
+                    class="form-control"
+                    placeholder="Nama"
+                  />
+                </div>
+                <div class="pb-3 col-lg-6 col-md-12 col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="bi bi-phone-fill"></i
+                    ></span>
+                    <input
+                      type="tel"
+                      name="noHp"
+                      id="noHp"
+                      class="form-control"
+                      placeholder="Phone Number"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="pb-3 col-md-12 col-lg-6">
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="bi bi-envelope-fill"></i
+                    ></span>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="form-control"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+                <div class="pb-3 col-md-12 col-lg-6 col-sm-12">
+                  <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    class="form-control"
+                    placeholder="Subject"
+                  />
+                </div>
+                <div class="pb-3 col-md-12 col-lg-12">
+                  <textarea
+                    name="ideaDescription"
+                    id="ideaDescription"
+                    class="form-control"
+                    rows="5"
+                    placeholder="Tulis Idemu Disini"
+                  ></textarea>
+                </div>
+              </div>
+              <div
+                class="d-none d-md-flex justify-content-md-end justify-content-sm-start"
+              >
+                <button type="submit" class="btn btn-success w-auto">
+                  <i class="bi bi-send pe-2"></i> Submit Idea
+                </button>
+              </div>
+              <div class="d-block d-md-none">
+                <button type="submit" class="btn btn-success w-100">
+                  <i class="bi bi-send pe-2"></i> Submit Idea
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container-fluid bg-body-secondary p-4 p-md-5">
+        <div
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          &copy; All Rights Reserved 2023. Made With ❤️
+          <div class="ps-1">
+            By
+            <a
+              href="https://www.instagram.com/alfinisnotfound404/"
+              class="text-decoration-none text-primary fw-bold"
+              >Alfin Febrian</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
