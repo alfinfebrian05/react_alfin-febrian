@@ -26,14 +26,6 @@ productNameInput.oninput = () => {
     validFeedback.style.display = "block";
     validFeedback.innerHTML = "Panjang karakter nama produk : " + count;
   }
-
-  //   var excludeSymbols = /@#{}/;
-  //   var string = this.value;
-  //   console.log(string.includes(excludeSymbols));
-  //   console.log(excludeSymbols.test(this.value));
-  //   if (string.includes(excludeSymbols)) {
-  //     console.log(`yes it containing ${excludeSymbols}`);
-  //   }
 };
 
 formProduct.onsubmit = (e) => {
