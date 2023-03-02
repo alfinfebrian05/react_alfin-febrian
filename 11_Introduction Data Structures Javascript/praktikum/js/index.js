@@ -4,12 +4,12 @@ const formProduct = document.getElementById("formProduct");
 const validFeedback = document.querySelector(".valid-feedback");
 const invalidFeedback = document.querySelector(".invalid-feedback");
 
-console.log(productData);
 productNameInput.oninput = () => {
   var maxInputLength = 25;
   var count = 0;
   let string = productNameInput.value;
   let regex = "@/#{}";
+
   for (var i = 0; i < productNameInput.value.length; i++) {
     count += 1;
   }
@@ -98,11 +98,96 @@ formProduct.onsubmit = (event) => {
     if (!select.value.trim()) {
       isInputFilled = false;
       alertDisplay(`Please fill in the ${select.name} field`, "danger");
-      // alert(`Please fill in the ${input.name} field`);
     }
   });
 
   if (isInputFilled) {
-    formProduct.submit();
+    const productJson = {
+      productName: null,
+      productCategory: null,
+      productFreshness: null,
+      productImage: null,
+      productDescription: null,
+      productPrice: `Rp + ${null}`,
+    };
+
+    const productNameValue = document.getElementById(
+      "validationProductName"
+    ).value;
+    const productImageValue = document.getElementById("product-image");
+    const productCategoryValue =
+      document.getElementById("product-category").value;
+    const radioInputs = document.querySelectorAll("input[type='radio']");
+    const productDescriptionValue =
+      document.getElementById("productDescription").value;
+    const productPriceValue = document.getElementById(
+      "validationProductPrice"
+    ).value;
+
+    productJson.productName = productNameValue;
+    productJson.productCategory = productCategoryValue;
+    productJson.productImage = productImageValue.value.split("\\").pop();
+    radioInputs.forEach((radioInput) => {
+      if (radioInput.checked) {
+        productJson.productFreshness = radioInput.value;
+      }
+    });
+    productJson.productDescription = productDescriptionValue;
+    productJson.productPrice = "Rp" + productPriceValue;
+
+    const items = JSON.parse(localStorage.getItem("productJSONData")) || [];
+    items.push(productJson);
+    localStorage.setItem("productJSONData", JSON.stringify(items));
+
+    window.location.reload();
   }
 };
+
+function loadItems() {
+  const items = JSON.parse(localStorage.getItem("productJSONData"));
+
+  const table = document.getElementById("items");
+
+  if (items.length < 1) {
+    const row = table.insertRow();
+    row.innerHTML =
+      "<td colspan='8' class='text-center p-3 text-danger'>Belum ada produk di tambahkan</td>";
+  } else {
+    for (let i = 0; i < items.length; i++) {
+      const row = table.insertRow();
+      row.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${items[i].productName}</td>
+      <td>${items[i].productCategory}</td>
+      <td>${items[i].productImage}</td>
+      <td>${items[i].productFreshness}</td>
+      <td>${items[i].productDescription}</td>
+      <td>Rp ${items[i].productPrice}</td>
+      <td>
+          <button class="btn btn-danger" onclick="deleteProduct(${
+            items.length - 1
+          })">
+              Delete Product
+          </button>
+      </td>
+    `;
+    }
+  }
+}
+
+loadItems();
+
+function deleteProduct(id) {
+  const items = JSON.parse(localStorage.getItem("productJSONData")) || [];
+
+  items.splice(id, 1);
+
+  localStorage.setItem("productJSONData", JSON.stringify(items));
+
+  const table = document.getElementById("items");
+  table.deleteRow(id);
+
+  alert("Produk berhasil dihapus");
+
+  window.location.reload();
+}
