@@ -133,7 +133,7 @@ formProduct.onsubmit = (event) => {
       }
     });
     productJson.productDescription = productDescriptionValue;
-    productJson.productPrice = "Rp" + productPriceValue;
+    productJson.productPrice = "Rp " + productPriceValue;
 
     const items = JSON.parse(localStorage.getItem("productJSONData")) || [];
     items.push(productJson);
@@ -162,7 +162,7 @@ function loadItems() {
       <td>${items[i].productImage}</td>
       <td>${items[i].productFreshness}</td>
       <td>${items[i].productDescription}</td>
-      <td>Rp ${items[i].productPrice}</td>
+      <td>${items[i].productPrice}</td>
       <td>
           <button class="btn btn-danger" onclick="deleteProduct(${
             items.length - 1
