@@ -24,7 +24,7 @@ export default function FormProduct() {
   const randomProductId = (event) => {
     const newRandomId = Math.floor(Math.random() * 100000) + 1;
     setRandomId(newRandomId);
-    console.log(randomId);
+    console.log(newRandomId);
   };
 
   const checkInputProduct = (e) => {
