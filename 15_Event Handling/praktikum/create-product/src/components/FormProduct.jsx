@@ -5,6 +5,7 @@ export default function FormProduct() {
   const [isChecked, setIsChecked] = useState(false);
   const [randomId, setRandomId] = useState("");
   const [validateMessage, setValidateMessage] = useState("");
+  const [validateStatus, setValidateStatus] = useState(false);
 
   const article = {
     title: {
@@ -41,6 +42,7 @@ export default function FormProduct() {
         countInputLength += 1;
       }
       setValidateMessage(`Nama produk : ${countInputLength} karakter`);
+      setValidateStatus(true);
     }
   };
 
@@ -121,7 +123,12 @@ export default function FormProduct() {
               autoComplete="off"
               onChange={checkInputProduct}
             />
-            <div className="d-block">{validateMessage && validateMessage}</div>
+            {validateStatus ? (
+              <div className="d-block invalid-feedback">{validateMessage}</div>
+            ) : (
+              <div className="d-block valid-feedback">{validateMessage}</div>
+            )}
+
             {/* <div className="invalid-feedback">{validateMessage}</div> */}
           </div>
           <div className="mb-3 col-md-4 col-sm-6">
