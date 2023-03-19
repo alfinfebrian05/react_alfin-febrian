@@ -1,13 +1,9 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
-import { LinkComponent } from "../atoms";
+import { ButtonLinkComponent } from "../atoms";
 
 const NavLink = ({ children, linkHref }) => {
-  return (
-    <Nav.Link>
-      <LinkComponent link_pathname={linkHref}>{children}</LinkComponent>
-    </Nav.Link>
-  );
+  return <Nav.Link href={linkHref}>{children}</Nav.Link>;
 };
 
 export default NavLink;

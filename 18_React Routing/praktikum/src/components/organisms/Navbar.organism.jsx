@@ -3,26 +3,45 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { ButtonLinkComponent } from "../atoms";
 
 import { NavLink } from "../molecules";
 
 const NavbarComponent = () => {
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="light"
+        variant="light"
+        className="fixed-top"
+      >
         <Container>
-          <Navbar.Brand href="#home">Simple Navbar</Navbar.Brand>
+          <Navbar.Brand href="/">Simple Navbar</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <NavLink linkHref="/">Home</NavLink>
-              <NavLink linkHref="/">Features</NavLink>
-              <NavLink linkHref="/">Pricing</NavLink>
-              <NavLink linkHref="/">FAQs</NavLink>
-              <NavLink linkHref="/">About</NavLink>
+              <NavLink linkHref="/">
+                <ButtonLinkComponent>Home</ButtonLinkComponent>
+              </NavLink>
+              <NavLink linkHref="/create-product">
+                <ButtonLinkComponent>Create Product</ButtonLinkComponent>
+              </NavLink>
+              <NavLink linkHref="/">
+                <ButtonLinkComponent>Features</ButtonLinkComponent>
+              </NavLink>
+              <NavLink linkHref="/">
+                <ButtonLinkComponent>Pricing</ButtonLinkComponent>
+              </NavLink>
+              <NavLink linkHref="/">
+                <ButtonLinkComponent>FAQs</ButtonLinkComponent>
+              </NavLink>
+              <NavLink linkHref="/">
+                <ButtonLinkComponent>About</ButtonLinkComponent>
+              </NavLink>
             </Nav>
             <Nav>
-              {/* <NavLink linkHref="/create-product">Create Product</NavLink> */}
               <NavDropdown
                 title="What You Want Todo?"
                 id="collasible-nav-dropdown"

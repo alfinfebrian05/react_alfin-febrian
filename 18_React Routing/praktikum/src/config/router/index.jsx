@@ -1,4 +1,4 @@
-import { LandingPage, CreateProduct } from "../../pages";
+import { LandingPage, CreateProduct, ProductDetail } from "../../pages";
 
 const routers = [
   {
@@ -8,6 +8,10 @@ const routers = [
   {
     pathname: "/create-product",
     element: <CreateProduct />,
+  },
+  {
+    pathname: "/product/:id",
+    element: <ProductDetail />,
   },
 ];
 
