@@ -49,13 +49,13 @@ const ComponentNavbar = () => {
                       as="ul"
                     >
                       <Nav.Item as="li">
-                        <Nav.Link href="#action1">About Me</Nav.Link>
+                        <Nav.Link href="#aboutMe">About Me</Nav.Link>
                       </Nav.Item>
                       <Nav.Item as="li">
-                        <Nav.Link href="#action2">Projects</Nav.Link>
+                        <Nav.Link href="#myProject">Projects</Nav.Link>
                       </Nav.Item>
                       <Nav.Item as="li">
-                        <Nav.Link href="#action2">Contact Me</Nav.Link>
+                        <Nav.Link href="#contactMe">Contact Me</Nav.Link>
                       </Nav.Item>
                       <Nav.Item as="li" className="d-none d-lg-block">
                         <Nav.Link

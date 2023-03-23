@@ -59,7 +59,7 @@ function App() {
   return (
     <div className="App">
       <ComponentNavbar />
-      <main className="mt-5 pt-2 p-md-0 m-md-0">
+      <main className="mt-5 pt-2 p-md-0 m-md-0" id="aboutMe">
         <div className="container-fluid px-xl-5 pt-xl-3 pb-xl-4 mt-0 py-0 mt-md-5 py-md-3 mt-lg-0 py-lg-0">
           <div className="row justify-content-center align-items-center py-3">
             <div className="col-xl-3 col-md-4 col-lg-4 d-sm-flex justify-content-center">
@@ -90,7 +90,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="container-fluid bg-light">
+        <div className="container-fluid bg-light" id="myProject">
           <div
             className="d-flex justify-content-center align-items-center py-5 px-0 px-md-3 px-xl-5 flex-column gap-2"
             id="portofolio"
@@ -321,7 +321,7 @@ function App() {
           </div>
         </div>
         {/* Form Contact Me Start */}
-        <div className="container-fluid p-5 bg-light">
+        <div className="container-fluid p-5 bg-light" id="contactMe">
           <div className="row">
             <div className="col-lg-4 col-md-5 col-sm-12 p-0 pe-md-4 pe-lg-5">
               <h3>Diskusi dengan saya</h3>
