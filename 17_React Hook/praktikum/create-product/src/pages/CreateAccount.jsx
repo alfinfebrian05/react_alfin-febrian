@@ -11,7 +11,7 @@ const CreateAccount = () => {
     var alreadyShown =
       localStorage.getItem("alreadyShown") ||
       localStorage.setItem("alreadyShown", true);
-    if (location.pathname === pageName && !alreadyShown) {
+    if (location.pathname === pageName && alreadyShown) {
       alert(
         `Welcome to ${location.pathname.replace(/[/-]/g, " ").trim()} page!`
       );
