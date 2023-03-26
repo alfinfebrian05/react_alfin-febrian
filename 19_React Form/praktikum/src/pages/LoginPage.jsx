@@ -4,20 +4,28 @@ import { NavbarTemplate } from "../components/templates";
 import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleShowPassword = () => setShowPassword(!showPassword);
+
+  const loginValidation = Yup.object({
+    emailLogin: Yup.string().email("Input valid email!"),
+    passwordLogin: Yup.string().length(
+      8,
+      "Password minimum 8 Character length"
+    ),
+  });
 
   const formik = useFormik({
     initialValues: {
       emailLogin: "",
       passwordLogin: "",
     },
+    validationSchema: loginValidation,
     onSubmit: (value) => {
       const user = JSON.parse(localStorage.getItem("account"));
       if (
@@ -51,7 +59,12 @@ const LoginPage = () => {
                       type="email"
                       name="emailLogin"
                       onChange={formik.handleChange}
+                      value={formik.values.emailLogin}
+                      isInvalid={formik.errors.emailLogin}
                     ></Form.Control>
+                    <Form.Control.Feedback type="invalid">
+                      {formik.errors.emailLogin}
+                    </Form.Control.Feedback>
                   </Col>
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -70,7 +83,12 @@ const LoginPage = () => {
                       type={showPassword ? "text" : "password"}
                       name="passwordLogin"
                       onChange={formik.handleChange}
+                      value={formik.values.passwordLogin}
+                      isInvalid={formik.errors.passwordLogin}
                     ></Form.Control>
+                    <Form.Control.Feedback type="invalid">
+                      {formik.errors.passwordLogin}
+                    </Form.Control.Feedback>
                   </Col>
                 </Form.Group>
                 <Col className="d-flex justify-content-center align-items-center mb-3">
