@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Container, Card, Form, Row, Col, Button } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
@@ -10,6 +12,7 @@ import { useFormik } from "formik";
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const messageValidationSchema = Yup.object({
     firstname: Yup.string()
@@ -42,18 +45,17 @@ const RegisterPage = () => {
     validationSchema: messageValidationSchema,
     onSubmit: (formValue) => {
       const { firstname, lastname, username, email, password } = formValue;
-      const formSubmit = localStorage.setItem(
-        "account",
-        JSON.stringify({
-          firstname,
-          lastname,
-          username,
-          email,
-          password,
-          isRegister: true,
-        })
-      );
-      console.log(JSON.parse(formSubmit));
+      const newUser = {
+        firstname,
+        lastname,
+        username,
+        email,
+        password,
+        isRegister: true,
+        loggedIn: false,
+      };
+      localStorage.setItem("account", JSON.stringify(newUser));
+      navigate("/login");
     },
   });
 
@@ -95,9 +97,6 @@ const RegisterPage = () => {
                     <Form.Control.Feedback type="invalid">
                       {formik.errors.lastname}
                     </Form.Control.Feedback>
-                    {/* <Form.Control.Feedback type="valid">
-                      {formik.vald.lastname}
-                    </Form.Control.Feedback> */}
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row} className="mb-3">

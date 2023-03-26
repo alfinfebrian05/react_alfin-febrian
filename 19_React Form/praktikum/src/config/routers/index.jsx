@@ -31,16 +31,16 @@ const routers = [
   },
   {
     pathname: "/create",
-    element: <CreateProduct />,
+    element: (
+      <PrivateRouter>
+        <CreateProduct />
+      </PrivateRouter>
+    ),
     textLink: "Product",
   },
   {
     pathname: "/login",
-    element: (
-      <PrivateRouter>
-        <LoginPage />
-      </PrivateRouter>
-    ),
+    element: <LoginPage />,
     textLink: "Login",
   },
   {

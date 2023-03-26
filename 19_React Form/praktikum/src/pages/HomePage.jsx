@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavbarTemplate } from "../components/templates";
-import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Button,
+  Card,
+  ListGroup,
+  Badge,
+  Modal,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 
 const HomePage = () => {
+  const [productList, setProductList] = useState([]);
+  const [modalData, setModalData] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
+  const [showModalProduct, setShowModalProduct] = useState(false);
+
+  useEffect(() => {
+    const products = JSON.parse(localStorage.getItem("products"));
+    if (products.length >= 1) return setProductList(products);
+  }, []);
+
+  const handleShowModal = (idx) => {
+    setShowModalProduct(!showModalProduct);
+    const filteredData = [...productList];
+    const dataModal = filteredData[idx].productDescription;
+    const dataTitleModal = filteredData[idx].productName;
+    setModalData(dataModal);
+    setModalTitle(dataTitleModal);
+  };
+
+  console.log(productList);
+
   return (
     <>
       <NavbarTemplate />
@@ -58,7 +89,60 @@ const HomePage = () => {
           </Row>
         </Container>
       </Container>
-      <Container className="my-5">
+      <Container className="py-3 py-md-5">
+        <h1 className="mb-5">Product List</h1>
+        <Row className="g-sm-4 gap-4 row-gap-3 row-gap-md-0 gap-md-0 gap-lg-0">
+          {productList.map((product, idx) => (
+            <Col sm lg={4} md={4} key={idx}>
+              <Card>
+                <Card.Img
+                  variant="top"
+                  src={`./assets/products/${product.productImage}`}
+                  className="object-fit-cover"
+                />
+                <Card.Body>
+                  <Card.Title>{product.productName}</Card.Title>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                  <ListGroup.Item className="d-flex justify-content-between align-items-center">
+                    Price : {product.productPrice}{" "}
+                    <Badge>{product.productCategory}</Badge>
+                  </ListGroup.Item>
+                </ListGroup>
+                <Card.Body className="d-flex justify-content-start gap-2">
+                  <Button
+                    variant="success"
+                    className="d-flex align-items-center gap-1 ps-3"
+                  >
+                    Add to Cart
+                    <Icon.CartPlusFill className="ms-2 me-1" />
+                  </Button>
+                  <Button
+                    variant="outline-primary"
+                    className="d-flex align-items-center gap-1 ps-3"
+                    onClick={() => handleShowModal(idx)}
+                  >
+                    Read Description
+                    <Icon.BookHalf className="ms-2 me-1" />
+                  </Button>
+                </Card.Body>
+              </Card>
+              <Modal show={showModalProduct} onHide={handleShowModal}>
+                <Modal.Header>
+                  <Modal.Title>Description {modalTitle}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>{modalData}</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="danger" onClick={handleShowModal}>
+                    Close Description
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+      <Container fluid className="py-5 bg-light">
         <div className="d-flex flex-column align-items-center">
           <h1 style={{ fontFamily: "'Jost', sans-serif", color: "#37517E" }}>
             Join Our Newsletter
@@ -83,7 +167,7 @@ const HomePage = () => {
           </div>
         </div>
       </Container>
-      <Container fluid className="bg-light">
+      <Container fluid className="bg-white">
         <Container>
           <footer className="py-5">
             <Row>
@@ -95,21 +179,21 @@ const HomePage = () => {
                   arsha
                 </h2>
                 <ul className="list-group pt-3">
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     A108 Adam Street
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     New York, NY 535022
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     United States
                   </li>
                 </ul>
                 <ul className="list-group pt-3">
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Phone: +1 5589 55488 55
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Email: info@example.com
                   </li>
                 </ul>
@@ -122,12 +206,12 @@ const HomePage = () => {
                   useful links
                 </h5>
                 <ul className="list-group pt-3">
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     <Link className="text-dark text-decoration-none" to="/">
                       Home
                     </Link>
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     <Link
                       className="text-dark text-decoration-none"
                       to="/create"
@@ -135,16 +219,16 @@ const HomePage = () => {
                       Product
                     </Link>
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     About Us
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Services
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Term Of Service
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Privacy Policy
                   </li>
                 </ul>
@@ -157,16 +241,16 @@ const HomePage = () => {
                   our services
                 </h5>
                 <ul className="list-group pt-3">
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Web Design
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Product Management
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Marketing
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Graphic Design
                   </li>
                 </ul>
@@ -179,11 +263,11 @@ const HomePage = () => {
                   our social network
                 </h5>
                 <ul className="list-group pt-3">
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     Cras fermentum odio eu feugiat lide par naso tierra videa
                     magna derita valies
                   </li>
-                  <li className="list-group-item border border-light bg-light border border-light bg-light ps-0">
+                  <li className="list-group-item border border-white bg-white border border-white bg-white ps-0">
                     <div className="d-flex gap-3">
                       <div className="bg-info rounded-circle p-3">
                         <Link to="https://instagram.com/alfinisnotfound404/">
