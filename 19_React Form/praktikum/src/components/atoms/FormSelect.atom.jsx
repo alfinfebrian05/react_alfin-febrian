@@ -6,12 +6,14 @@ const FormSelect = ({
   handleChange,
   children,
   selectName,
+  handleInvaLid,
 }) => {
   return (
     <Form.Select
       defaultValue={defaultOptionValue}
       onChange={handleChange}
       name={selectName}
+      isInvalid={handleInvaLid}
     >
       {children}
     </Form.Select>

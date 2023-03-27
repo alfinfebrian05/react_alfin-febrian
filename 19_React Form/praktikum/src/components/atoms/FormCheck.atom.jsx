@@ -8,6 +8,7 @@ const FormCheck = ({
   formCheckName,
   checkOnChange,
   handleInvalid,
+  invalidMessage,
 }) => {
   return (
     <>
@@ -19,6 +20,9 @@ const FormCheck = ({
         onChange={checkOnChange}
         isInvalid={handleInvalid}
       />
+      <Form.Control.Feedback type="invalid">
+        {invalidMessage}
+      </Form.Control.Feedback>
     </>
   );
 };

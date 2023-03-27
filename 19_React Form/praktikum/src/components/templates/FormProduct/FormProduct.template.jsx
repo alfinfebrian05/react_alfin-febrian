@@ -32,13 +32,39 @@ const FormProduct = () => {
   const validImageSize = 1500000;
 
   const validationFormSchema = Yup.object({
+    productName: Yup.string()
+      .required("Product Name must be Filled!")
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        "Product Name Only Accept Alphabet and Numbers!"
+      ),
+    productCategory: Yup.string()
+      .required("Product Category must be Filled!")
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        "Product Name Only Accept Alphabet and Numbers!"
+      ),
+    productDescription: Yup.string()
+      .required("Product Description must be Filled!")
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        "Product Description Only Accept Alphabet and Numbers!"
+      ),
     productFreshness: Yup.string()
       .oneOf(productFreshness)
-      .required("Product freshness must be choosed!"),
+      .required("Product freshness must be choosed!")
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        "Product Freshness Only Accept Alphabet and Numbers!"
+      ),
+    productPrice: Yup.string()
+      .required("Product Price must be filled!")
+      .matches(/^[0-9]*$/, "Product Price Only Accept Alphabet and Numbers!"),
     productImage: Yup.mixed()
+      .required("Product Image must be selected!")
       .test(
         "type",
-        "image type is invalid, choose another image",
+        "Image type is invalid, choose another image type (.png, .jpeg, .jpg)",
         (file) => file && validImageType.includes(file.type)
       )
       .test(
@@ -69,7 +95,13 @@ const FormProduct = () => {
           productPrice,
         } = formProduct;
 
+        const formattedPrice = new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+        }).format(productPrice);
+
         const imageValue = productImage.name;
+
         const dateCurrent = new Date().toLocaleDateString("id-ID");
         const timeCurrent = new Date().toLocaleTimeString("en-US", {
           hour12: false,
@@ -84,7 +116,7 @@ const FormProduct = () => {
           productImage: imageValue,
           productFreshness,
           productDescription,
-          productPrice,
+          productPrice: formattedPrice,
         };
 
         setProducts([...products, newProduct]);
@@ -115,7 +147,11 @@ const FormProduct = () => {
             inputName="productName"
             inputValue={formik.values.productName}
             handleChange={formik.handleChange}
+            handleInvalid={formik.errors.productName}
           />
+          <Form.Control.Feedback type="invalid">
+            {formik.errors.productName}
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="col-10 col-md-6 col-lg-3 mb-3">
           <Form.Label>Product Category</Form.Label>
@@ -123,6 +159,7 @@ const FormProduct = () => {
             selectName="productCategory"
             handleChange={formik.handleChange}
             defaultOptionValue={formik.values.productCategory}
+            handleInvaLid={formik.errors.productCategory}
           >
             {categories.map((category) => {
               return (
@@ -132,6 +169,9 @@ const FormProduct = () => {
               );
             })}
           </FormSelect>
+          <Form.Control.Feedback type="invalid">
+            {formik.errors.productCategory}
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="col-8 col-md-5 col-lg-3 mb-3">
           <Form.Label>Product Image</Form.Label>
@@ -156,7 +196,6 @@ const FormProduct = () => {
                 formCheckType="radio"
                 formCheckName="productFreshness"
                 formCheckLabel={freshnessValue}
-                // formCheckValue={formik.values.productCategory}
                 checkOnChange={(e) =>
                   formik.setFieldValue(
                     "productFreshness",
@@ -164,13 +203,11 @@ const FormProduct = () => {
                   )
                 }
                 handleInvalid={formik.errors.productFreshness}
+                invalidMessage={formik.errors.productFreshness}
                 key={freshnessValue}
               />
             );
           })}
-          <Form.Control.Feedback type="invalid">
-            {formik.errors.productFreshness}
-          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="col-8 col-md-5 col-lg-9 mb-3">
           <Form.Label>Product Description</Form.Label>
@@ -179,7 +216,11 @@ const FormProduct = () => {
             inputName="productDescription"
             inputValue={formik.values.productDescription}
             handleChange={formik.handleChange}
+            handleInvalid={formik.errors.productDescription}
           />
+          <Form.Control.Feedback type="invalid">
+            {formik.errors.productDescription}
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="col-11 col-md-7 col-lg-9 mb-3">
           <Form.Label>Product Price</Form.Label>
@@ -188,15 +229,13 @@ const FormProduct = () => {
             inputType="number"
             inputPlaceholder="Rp 1"
             inputName="productPrice"
-            handleChange={(e) => {
-              const { value } = e.target;
-              const formattedPrice = new Intl.NumberFormat("id-ID", {
-                style: "currency",
-                currency: "IDR",
-              }).format(value);
-              formik.setFieldValue("productPrice", formattedPrice);
-            }}
+            handleChange={formik.handleChange}
+            inputValue={formik.values.productPrice}
+            handleInvalid={formik.errors.productPrice}
           />
+          <Form.Control.Feedback type="invalid">
+            {formik.errors.productPrice}
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="col-11 col-md-7 col-lg-9 mb-3 d-flex justify-content-center">
           <Button

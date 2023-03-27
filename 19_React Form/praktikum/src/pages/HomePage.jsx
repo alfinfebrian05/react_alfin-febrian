@@ -93,7 +93,7 @@ const HomePage = () => {
         <h1 className="mb-5">Product List</h1>
         <Row className="g-sm-4 gap-4 row-gap-3 row-gap-md-0 gap-md-0 gap-lg-0">
           {productList.map((product, idx) => (
-            <Col sm lg={4} md={4} key={idx}>
+            <Col sm lg={6} md={6} xl={4} key={idx}>
               <Card>
                 <Card.Img
                   variant="top"
@@ -111,13 +111,6 @@ const HomePage = () => {
                 </ListGroup>
                 <Card.Body className="d-flex justify-content-start gap-2">
                   <Button
-                    variant="success"
-                    className="d-flex align-items-center gap-1 ps-3"
-                  >
-                    Add to Cart
-                    <Icon.CartPlusFill className="ms-2 me-1" />
-                  </Button>
-                  <Button
                     variant="outline-primary"
                     className="d-flex align-items-center gap-1 ps-3"
                     onClick={() => handleShowModal(idx)}
@@ -133,6 +126,13 @@ const HomePage = () => {
                 </Modal.Header>
                 <Modal.Body>{modalData}</Modal.Body>
                 <Modal.Footer>
+                  <Button
+                    variant="success"
+                    className="d-flex align-items-center gap-1 ps-3"
+                  >
+                    Add to Cart
+                    <Icon.CartPlusFill className="ms-2 me-1" />
+                  </Button>
                   <Button variant="danger" onClick={handleShowModal}>
                     Close Description
                   </Button>
