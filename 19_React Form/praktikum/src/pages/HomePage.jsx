@@ -21,8 +21,10 @@ const HomePage = () => {
   const [showModalProduct, setShowModalProduct] = useState(false);
 
   useEffect(() => {
-    const products = JSON.parse(localStorage.getItem("products"));
-    if (products.length >= 1) return setProductList(products);
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    if (products.length >= 1) {
+      setProductList(products);
+    }
   }, []);
 
   const handleShowModal = (idx) => {
@@ -92,54 +94,68 @@ const HomePage = () => {
       <Container className="py-3 py-md-5">
         <h1 className="mb-5">Product List</h1>
         <Row className="g-sm-4 gap-4 row-gap-3 row-gap-md-0 gap-md-0 gap-lg-0">
-          {productList.map((product, idx) => (
-            <Col sm lg={6} md={6} xl={4} key={idx}>
-              <Card>
-                <Card.Img
-                  variant="top"
-                  src={`./assets/products/${product.productImage}`}
-                  className="object-fit-cover"
-                />
-                <Card.Body>
-                  <Card.Title>{product.productName}</Card.Title>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                  <ListGroup.Item className="d-flex justify-content-between align-items-center">
-                    Price : {product.productPrice}{" "}
-                    <Badge>{product.productCategory}</Badge>
-                  </ListGroup.Item>
-                </ListGroup>
-                <Card.Body className="d-flex justify-content-start gap-2">
-                  <Button
-                    variant="outline-primary"
-                    className="d-flex align-items-center gap-1 ps-3"
-                    onClick={() => handleShowModal(idx)}
-                  >
-                    Read Description
-                    <Icon.BookHalf className="ms-2 me-1" />
-                  </Button>
-                </Card.Body>
-              </Card>
-              <Modal show={showModalProduct} onHide={handleShowModal}>
-                <Modal.Header>
-                  <Modal.Title>Description {modalTitle}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{modalData}</Modal.Body>
-                <Modal.Footer>
-                  <Button
-                    variant="success"
-                    className="d-flex align-items-center gap-1 ps-3"
-                  >
-                    Add to Cart
-                    <Icon.CartPlusFill className="ms-2 me-1" />
-                  </Button>
-                  <Button variant="danger" onClick={handleShowModal}>
-                    Close Description
-                  </Button>
-                </Modal.Footer>
-              </Modal>
-            </Col>
-          ))}
+          {productList.length === 0 ? (
+            <div>
+              <h3 className="mb-3">No Product Added...</h3>
+              <Link to="/login" className="text-success text-decoration-none">
+                Login
+              </Link>{" "}
+              /{" "}
+              <Link to="/register" className="text-danger text-decoration-none">
+                Register
+              </Link>{" "}
+              to add product
+            </div>
+          ) : (
+            productList.map((product, idx) => (
+              <Col sm lg={6} md={6} xl={4} key={idx}>
+                <Card>
+                  <Card.Img
+                    variant="top"
+                    src={`./assets/products/${product.productImage}`}
+                    className="object-fit-cover"
+                  />
+                  <Card.Body>
+                    <Card.Title>{product.productName}</Card.Title>
+                  </Card.Body>
+                  <ListGroup className="list-group-flush">
+                    <ListGroup.Item className="d-flex justify-content-between align-items-center">
+                      Price : {product.productPrice}{" "}
+                      <Badge>{product.productCategory}</Badge>
+                    </ListGroup.Item>
+                  </ListGroup>
+                  <Card.Body className="d-flex justify-content-start gap-2">
+                    <Button
+                      variant="outline-primary"
+                      className="d-flex align-items-center gap-1 ps-3"
+                      onClick={() => handleShowModal(idx)}
+                    >
+                      Read Description
+                      <Icon.BookHalf className="ms-2 me-1" />
+                    </Button>
+                  </Card.Body>
+                </Card>
+                <Modal show={showModalProduct} onHide={handleShowModal}>
+                  <Modal.Header>
+                    <Modal.Title>Description {modalTitle}</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>{modalData}</Modal.Body>
+                  <Modal.Footer>
+                    <Button
+                      variant="success"
+                      className="d-flex align-items-center gap-1 ps-3"
+                    >
+                      Add to Cart
+                      <Icon.CartPlusFill className="ms-2 me-1" />
+                    </Button>
+                    <Button variant="danger" onClick={handleShowModal}>
+                      Close Description
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </Col>
+            ))
+          )}
         </Row>
       </Container>
       <Container fluid className="py-5 bg-light">
