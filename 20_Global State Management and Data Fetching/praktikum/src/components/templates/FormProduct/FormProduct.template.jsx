@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback } from "react";
 import { Form, Button, Table } from "react-bootstrap";
 
 import { useFormik } from "formik";
@@ -8,6 +8,10 @@ import { v4 as uuidv4 } from "uuid";
 import FormComponent from "../../molecules/FormComponent.molecule";
 import { FormSelect, FormCheck, FormInput } from "../../atoms";
 
+import { useDispatch } from "react-redux";
+import { useProductSelector } from "../../../config/redux/product/productSelector";
+import { productAction } from "../../../config/redux/product/productSlice";
+
 const FormProduct = () => {
   const productFreshness = ["Brand New", "Second Hand", "Refurbrished"];
   const categories = [
@@ -16,24 +20,8 @@ const FormProduct = () => {
     "Category 2",
     "Category 3",
   ];
-  const [products, setProducts] = useState([]);
-  const [productUuid, setProductUuid] = useState("");
-
-  useEffect(() => {
-    const items = JSON.parse(window.localStorage.getItem("products")) || [];
-    if (items.length >= 1) {
-      setProducts(items);
-    }
-  }, []);
-
-  useEffect(() => {
-    setProductUuid(uuidv4());
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(products));
-  }, [products]);
-
+  const dispatch = useDispatch();
+  const product = useProductSelector();
   const validImageType = ["image/png", "image/jpg", "image/jpeg"];
   const validImageSize = 1500000;
 
@@ -128,18 +116,25 @@ const FormProduct = () => {
           productPrice: formattedPrice,
         };
 
-        setProducts([...products, newProduct]);
+        dispatch(productAction.add([...product, newProduct]));
         formik.resetForm();
       },
-      [products]
+      [product]
     ),
   });
 
+  console.log(product);
+
   const handleDeleteProduct = (idx) => {
-    const updatedProduct = [...products];
-    updatedProduct.splice(idx, 1);
-    console.log(updatedProduct);
-    setProducts(updatedProduct);
+    const updatedProduct = [...product];
+    const confirmedDelete = confirm(
+      `Apakah anda ingin menghapus product dengan nama ${updatedProduct[idx].productName}? Jika Anda memilih iya, langkah ini tidak dapat di reverse?`
+    );
+
+    if (confirmedDelete) {
+      updatedProduct.splice(idx, 1);
+      dispatch(productAction.delete(updatedProduct));
+    }
   };
 
   return (
@@ -276,28 +271,24 @@ const FormProduct = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product, idx) => (
-              <tr key={idx}>
-                <td>{idx + 1}</td>
-                <td>{product.productName}</td>
-                <td>{product.productCategory}</td>
-                <td>{product.productImage}</td>
-                <td>{product.productFreshness}</td>
-                <td>{product.productDescription}</td>
-                <td>{product.productPrice}</td>
-                <td>
-                  <div className="d-flex align-items-center gap-2">
-                    <Button variant="warning">Edit</Button>
-                    <Button
-                      variant="danger"
-                      onClick={() => handleDeleteProduct(idx)}
-                    >
+            {product.map((value, idx) => {
+              return (
+                <tr key={idx}>
+                  <td>{idx + 1}</td>
+                  <td>{value.productName}</td>
+                  <td>{value.productCategory}</td>
+                  <td>{value.productImage}</td>
+                  <td>{value.productFreshness}</td>
+                  <td>{value.productDescription}</td>
+                  <td>{value.productPrice}</td>
+                  <td>
+                    <Button onClick={() => handleDeleteProduct(idx)}>
                       Delete
                     </Button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
       </div>
