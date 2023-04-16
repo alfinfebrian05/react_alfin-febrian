@@ -20,11 +20,15 @@ const DetailProduct = () => {
   const param = useParams();
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
-  // const getUser = JSON.parse(localStorage.getItem("account"));
+  const getUser = JSON.parse(localStorage.getItem("account"));
 
-  // useEffect(() => {
-  //   if (getUser) return setUsername(getUser.username);
-  // }, []);
+  useEffect(() => {
+    if (getUser) {
+      return setUsername(getUser.username);
+    } else {
+      setUsername("Anonymous");
+    }
+  }, []);
 
   const QUERY_BY_NAME = gql`
     subscription QUERY_BY_NAME($_eq: Int!) {
@@ -101,7 +105,7 @@ const DetailProduct = () => {
 
   const formik = useFormik({
     initialValues: {
-      usernameComment: "",
+      usernameComment: username,
       productComment: "",
     },
     onSubmit: (formValues) => {

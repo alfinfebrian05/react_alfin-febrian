@@ -14,10 +14,7 @@ const LoginPage = () => {
 
   const loginValidation = Yup.object({
     emailLogin: Yup.string().email("Input valid email!"),
-    passwordLogin: Yup.string().length(
-      8,
-      "Password minimum 8 Character length"
-    ),
+    passwordLogin: Yup.string().min(8, "Password minimum 8 Character length"),
   });
 
   const formik = useFormik({
