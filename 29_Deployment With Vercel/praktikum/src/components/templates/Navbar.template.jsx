@@ -28,13 +28,27 @@ const NavbarTemplate = () => {
             className="justify-content-end py-2"
           >
             <Nav className="gap-3 m-0">
-              {routers.map((router, idx) => (
-                <NavLinkComponent
-                  hrefTo={router.pathname}
-                  children={router.textLink}
-                  key={idx}
-                />
-              ))}
+              {isLoggedIn
+                ? routers.map((router, idx) => {
+                    return (
+                      <NavLinkComponent
+                        hrefTo={router.pathname}
+                        children={router.textLink}
+                        key={idx}
+                      />
+                    );
+                  })
+                : routers
+                    .filter((router) => router.pathname !== "/create")
+                    .map((router, idx) => {
+                      return (
+                        <NavLinkComponent
+                          hrefTo={router.pathname}
+                          children={router.textLink}
+                          key={idx}
+                        />
+                      );
+                    })}
             </Nav>
           </Navbar.Collapse>
         </Container>
