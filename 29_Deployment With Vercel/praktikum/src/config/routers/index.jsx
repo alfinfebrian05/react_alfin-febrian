@@ -63,7 +63,7 @@ const routers = [
   {
     pathname: "/detail/:id",
     element: <DetailProduct />,
-    textLink: "Register",
+    textLink: "Detail Product",
   },
   {
     pathname: "/search/:product_name",
