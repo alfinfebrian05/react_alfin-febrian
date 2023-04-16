@@ -44,9 +44,9 @@ const routers = [
   {
     pathname: "/create",
     element: (
-      <PrivateRouter>
-        <CreateProduct />
-      </PrivateRouter>
+      <CreateProduct />
+      // <PrivateRouter>
+      // </PrivateRouter>
     ),
     textLink: "Product",
   },
